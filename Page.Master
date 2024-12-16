@@ -1,0 +1,247 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Page.Master.cs" Inherits="Group2.Site1" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>FASHION SHOP</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico in the root directory -->
+    <link href="Image/Logo/Logo.png" type="img/x-icon" rel="shortcut icon">
+    <!-- All css files are included here. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/iconfont.min.css">
+    <link rel="stylesheet" href="assets/css/plugins.css">
+    <link rel="stylesheet" href="assets/css/helper.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Modernizr JS -->
+    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <div id="main-wrapper">
+            <!--Header section start-->
+            <header class="header header-transparent header-sticky">
+                <div class="header-top">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+
+                            <div class="col-xl-6 col-lg-8 d-flex flex-wrap justify-content-lg-start justify-content-center align-items-center">
+                                <!--Links start-->
+                                <div class="header-top-links">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-phone"></i>(+84) 0366 666 666</a></li>
+                                        <li><a href="mailto: fsoft@gmail.com"><i class="fa fa-envelope-open-o"></i>fshop@gmail.com</a></li>
+                                    </ul>
+
+                                </div>
+                                <!--Links end-->
+                                <!--Socail start-->
+                                <asp:Label ID="lbName" runat="server"></asp:Label>
+                                <!--Socail end-->
+                            </div>
+
+                            <div class="col-xl-6 col-lg-4">
+                                <div class="ht-right d-flex justify-content-lg-end justify-content-center">
+                                    <ul class="ht-us-menu d-flex">
+                                        <li id="MasterPageAccount" runat="server">
+                                            <asp:Label ID="Label1" runat="server" Text="Tài khoản"></asp:Label>
+                                            <ul class="ht-dropdown right">
+                                                <li><a href="MyAccount.aspx">Tài khoản của tôi</a></li>
+                                                <li>
+                                                    <asp:Button ID="btn_Wishlist" CssClass="btn-wishlist p-0 bg-white border-0" runat="server" Text="Yêu thích" OnClick="btn_Wishlist_Click" /></li>
+                                                <li>
+                                                    <asp:LinkButton ID="lbLogout" runat="server" OnClick="lbLogout_Click">Đăng xuất</asp:LinkButton>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li id="MasterPageLogin" runat="server">
+                                            <div>
+                                                <a href="DangNhap.aspx">Đăng nhập</a>
+                                                |
+                                                <a href="DangKi.aspx">
+                                                    <img src="#" alt="">Đăng ký</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="header-bottom menu-right">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <!--Logo start-->
+                            <div class="col-lg-3 col-md-3 col-6 order-lg-1 order-md-1 order-1">
+                                <div class="logo">
+                                    <a href="TrangChu.aspx">
+                                        <img width="200" src="Image/Logo/Logo1.png" alt=""></a>
+                                </div>
+                            </div>
+                            <!--Logo end-->
+
+                            <!--Menu start-->
+                            <div class="col-lg-6 col-md-6 col-12 order-lg-2 order-md-2 order-3 d-flex justify-content-center">
+                                <nav class="main-menu">
+                                    <ul>
+                                        <li><a href="TrangChu.aspx">Trang chủ</a></li>
+                                        <li><a href="Blog.aspx">Blog</a></li>
+                                        <li><a href="GioiThieu.aspx">Giới thiệu</a></li>
+                                        <li><a href="LienHe.aspx">Liên hệ</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!--Menu end-->
+
+                            <!--Search Cart Start-->
+                            <div class="col-lg-3 col-md-3 col-6 order-lg-3 order-md-3 order-2 d-flex justify-content-end">
+                                <div class="header-search">
+                                    <%-- <form action="#">--%> <%--class="fa fa-search"--%>
+                                    <asp:TextBox ID="Txttimkiem" CssClass="border" Height="36px" runat="server"></asp:TextBox>
+                                    <asp:Button ID="Btn_Timkiem" OnClick="btnTim_Click" class="template-btn" runat="server" Text="Tìm kiếm" />
+                                    <%--     </form>
+                                    
+                                </div>--%>
+                                </div>
+                                <div id="MasterPageCart" runat="server">
+                                    <div class="header-cart">
+                                        <a href="GioHang.aspx"><i class="fa fa-shopping-cart"></i><%--<span></span>--%></a>
+                                    </div>
+                                    <!--Mini Cart Dropdown End-->
+                                </div>
+                            </div>
+                            <!--Search Cart End-->
+                        </div>
+                        <!--Mobile Menu start-->
+                        <div class="row">
+                            <div class="col-12 d-flex d-lg-none">
+                                <div class="mobile-menu"></div>
+                            </div>
+                        </div>
+                        <!--Mobile Menu end-->
+                    </div>
+                    <div class="col-12 order-lg-2 order-md-2 order-3 d-flex justify-content-center">
+                        <nav class="main-menu">
+                            <ul>
+                                <asp:Repeater ID="CategoryRepeater" runat="server">
+                                    <ItemTemplate>
+                                        <li>
+                                            <a title='<%#: Eval("Name") %> <%#: Eval("CategoryId") %>' href='/TrangChu.aspx?CategoryId=<%#: Eval("CategoryId") %>'>
+                                                <%# Eval("Name") %>
+                                            </a>
+                                        </li>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+            </header>
+
+            <!--Header section end-->
+
+            <!-------------------------------------Header------------------------------------------------>
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <!------------------------------------Footer------------------------------------------------>
+            <!--Footer section start-->
+            <footer class="footer-section section bg-dark">
+
+                <!--Footer Top start-->
+                <div
+                    class="footer-top section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-45 pb-lg-25 pb-md-15 pb-sm-5 pb-xs-0">
+                    <div class="container">
+                        <div class="row row-25">
+
+                            <!--Footer Widget start-->
+                            <div class="footer-widget col-lg-3 col-md-6 col-sm-6 col-12 mb-40 mb-xs-35">
+                                <h4 class="title"><span class="text">Giới thiệu</span></h4>
+                                <p>Chúng tôi rất hân hạnh được phục vụ quý khách. Sự hài lòng của quý khách là niềm hạnh phúc của chúng tôi</p>
+                            </div>
+                            <!--Footer Widget end-->
+
+
+                            <!--Footer Widget start-->
+                            <div class="footer-widget col-lg-3 col-md-6 col-sm-6 col-12 mb-40 mb-xs-35">
+                                <h4 class="title"><span class="text">Khách hàng</span></h4>
+                                <ul class="ft-menu">
+                                    <li><a href="#">Thanh toán</a></li>
+                                    <li><a href="#">Giao hàng</a></li>
+                                    <li><a href="#">Chi nhánh</a></li>
+                                    <li><a href="#">Trả góp</a></li>
+                                </ul>
+                            </div>
+                            <!--Footer Widget end-->
+
+
+                            <!--Footer Widget start-->
+                            <div class="footer-widget col-lg-3 col-md-6 col-sm-6 col-12 mb-40 mb-xs-35">
+                                <h4 class="title"><span class="text">Thông tin</span></h4>
+                                <ul class="ft-menu">
+                                    <li><a href="#">Địa chỉ</a></li>
+                                    <li><a href="#">Chính sách</a></li>
+                                    <li><a href="#">Đối tác</a></li>
+                                    <li><a href="#">Chi nhánh</a></li>
+                                </ul>
+                            </div>
+                            <!--Footer Widget end-->
+
+                            <!--Footer Widget start-->
+                            <div class="footer-widget col-lg-3 col-md-6 col-sm-6 col-12 mb-40 mb-xs-35">
+                                <h4 class="title"><span class="text">Liên hệ</span></h4>
+                                <ul class="ft-menu">
+                                    <li><a href="#">(+84) 366 666 666</a></li>
+                                    <li><a href="#">fshop@gmail.com</a></li>
+                                </ul>
+                            </div>
+                            <!--Footer Widget end-->
+                        </div>
+                    </div>
+                </div>
+                <!--Footer Top end-->
+
+                <!--Footer bottom start-->
+                <div class="footer-bottom section">
+                    <div class="container ft-border pt-40 pb-40 pt-xs-20 pb-xs-20">
+                        <div class="row justify-content-between align-items-center">
+                            <div class="col-lg-6 col-md-6 col-sm-8">
+                                <div class="copyright text-left">
+                                    <p>Copyright &copy;2024 <a href="#">FASHION SHOP</a>. All rights reserved.</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <div class="footer-logo text-right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Footer bottom end-->
+
+            </footer>
+            <!--Footer section end-->
+        </div>
+    </form>
+    <!-- Placed js at the end of the document so the pages load faster -->
+
+    <!-- All jquery file included here -->
+    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
