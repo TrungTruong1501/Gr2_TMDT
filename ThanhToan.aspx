@@ -55,11 +55,11 @@
                                     <p class="font-weight-bold ml-1"><%# Eval("ProductName") %></p>
                                 </td>
                                 <td><%# Eval("ColorName") %></td>
-                                <td><%# Group3.Class.Extension.FormatCurrency(Convert.ToInt32(Eval("Price"))) %></td>
+                                <td><%# Group2.Class.Extension.FormatCurrency(Convert.ToInt32(Eval("Price"))) %></td>
                                 <td>
                                     <asp:TextBox ID="txtQuantity" runat="server" Text='<%# Eval("Quantity") %>' CssClass="quantity-input" />
                                 </td>
-                                <td><%# Group3.Class.Extension.FormatCurrency(Convert.ToInt32(Eval("Total"))) %></td>
+                                <td><%# Group2.Class.Extension.FormatCurrency(Convert.ToInt32(Eval("Total"))) %></td>
                             </tr>
                         </ItemTemplate>
                         <FooterTemplate>
