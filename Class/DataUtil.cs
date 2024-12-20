@@ -76,7 +76,7 @@ namespace Group2.Class
         public List<Product> getListProduct()
         {
             List<Product> dt = new List<Product>();
-            string sql = "select * from Product ORDER BY product_id DESC";
+            string sql = "select * from Product where RowState ='Unchanged' ORDER BY product_id DESC  ";
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -98,7 +98,7 @@ namespace Group2.Class
         public List<Product> searchProducts(string keyword)
         {
             List<Product> listPro = new List<Product>();
-            string sql = "select * from Product where name like @keyword";
+            string sql = "select * from Product where name like @keyword and RowState ='Unchanged'";
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("keyword", "%" + keyword + "%");
@@ -122,7 +122,7 @@ namespace Group2.Class
         public List<Product> getListNewestProduct()
         {
             List<Product> dt = new List<Product>();
-            string sql = "select top 10 * from Product order by product_id DESC";
+            string sql = "select top 10 * from Product where RowState ='Unchanged' order by product_id DESC";
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -201,7 +201,7 @@ namespace Group2.Class
         public List<Product> getListProductByCategory(int id)
         {
             List<Product> dt = new List<Product>();
-            string sql = "select * from Product where category_id = @id";
+            string sql = "select * from Product where category_id = @id and RowState ='Unchanged'";
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("id", id);
@@ -223,7 +223,7 @@ namespace Group2.Class
         public List<Product> getListNewestProductByCategory(int id)
         {
             List<Product> dt = new List<Product>();
-            string sql = "select top 10 * from Product where category_id = @id order by product_id DESC";
+            string sql = "select top 10 * from Product where category_id = @id and RowState ='Unchanged' order by product_id DESC";
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("id", id);
@@ -402,10 +402,11 @@ namespace Group2.Class
         public void deleteProduct(int Id)
         {
             con.Open();
-            string sql1 = "delete from Product where product_id=@Id";
+            string sql1 = "update Product set RowState ='Deleted' where product_id=@Id";
             SqlCommand cmd = new SqlCommand(sql1, con);
             cmd.Parameters.AddWithValue("Id", Id);
             cmd.ExecuteNonQuery();
+
             con.Close();
         }
         public int addProduct(Product product)
